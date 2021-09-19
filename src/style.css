@@ -182,6 +182,7 @@ hr {
   flex-direction: column;
   padding: 20px;
   margin: -0 auto;
+  font-size: smaller;
 }
 
 @media (max-width: 370px) {
