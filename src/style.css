@@ -1,0 +1,254 @@
+.container {
+  background-color: #f0edee;
+  flex-direction: column;
+  max-width: 600px;
+  padding: 20px;
+  margin: -0 auto;
+  overflow-y: hidden;
+}
+
+h1 {
+  font-size: 60px;
+  text-align: center;
+  font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
+  color: #592e83;
+}
+
+.celsius-fahrenheit-block {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 20px;
+  padding-right: 15px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #592e83;
+}
+
+.celsius {
+  font-style: normal;
+  font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
+}
+
+.fahrenheit {
+  padding-left: 10px;
+  font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
+}
+
+.celsius:hover,
+.fahrenheit:hover {
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.search-container {
+  display: flex;
+  padding: 0px 110px;
+  margin-bottom: 30px;
+}
+
+.search-city-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.search-city {
+  display: flex;
+  background-color: #f9f9f9;
+}
+
+.go-button {
+  display: flex;
+  background-color: #592e83;
+  color: #fff;
+  font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
+  border-radius: 30px;
+  margin: 0 20px;
+  padding: 5px 15px;
+  border: 1px solid #592e83;
+}
+
+.go-button:hover {
+  opacity: 0.6;
+  transform: 200ms ease-in-out;
+}
+
+.current-location {
+  display: flex;
+  color: #592e83;
+  font-size: 30px;
+}
+
+.current-location:hover {
+  color: #592e83;
+  opacity: 0.6;
+  transform: 200ms ease-in-out;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+h2 {
+  margin-top: 20px;
+  font-family: "Rubik", sans-serif, "Times New Roman", Times, serif;
+  text-align: center;
+  color: #592e83;
+  font-weight: bolder;
+}
+
+h3 {
+  text-align: center;
+  font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
+  margin-bottom: 30px;
+  font-size: 22px;
+}
+
+.current-weather-info {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 100px;
+}
+
+.current-weather-details {
+  font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
+}
+
+.current-weather {
+  font-size: 70px;
+  color: #592e83;
+}
+
+.sky-details {
+  font-size: 20px;
+}
+
+.current-temperature {
+  font-size: 35px;
+  font-weight: bolder;
+  color: #592e83;
+}
+
+hr {
+  color: #000;
+}
+
+.weather-days-week-container {
+  display: flex;
+  flex-wrap: row nowrap;
+  justify-content: space-evenly;
+  align-items: baseline;
+  font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
+  text-align: center;
+}
+
+.day-1-weather,
+.day-2-weather,
+.day-3-weather,
+.day-4-weather,
+.day-5-weather {
+  font-size: 30px;
+  color: #592e83;
+}
+
+.col-12,
+.col-4,
+.col-6 {
+  text-align: center;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
+}
+
+.real-feel,
+.wind,
+.humidity,
+.chance-of-rain,
+.sunrise,
+.sunset {
+  font-weight: bold;
+}
+
+.sunrise-sunset {
+  padding: 0px 50px;
+}
+
+@media (max-width: 370px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  .search-container {
+    padding: 0px;
+  }
+
+  .go-button {
+    margin: 0px 10px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  .current-weather-info {
+    padding: 0px 10px;
+  }
+
+  .weather-days-week-container {
+    font-size: 90%;
+  }
+
+  .col-12,
+  .col-4,
+  .col-6 {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 371px) and (max-width: 430px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  .celsius-fahrenheit-block {
+    font-size: 18px;
+  }
+
+  .search-container {
+    padding: 0px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  .current-weather-info {
+    padding: 0px 50px;
+  }
+}
+
+@media (min-width: 431px) and (max-width: 599px) {
+  h1 {
+    font-size: 44px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  .current-weather-info {
+    padding: 0px 30px;
+  }
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="/Curso PLUS/Weather App HTML CSS/src/style.css"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/cc85df16ae.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Weather App</h1>
+
+      <p class="celsius-fahrenheit-block">
+        <span class="celsius">ºC</span>
+        <span class="fahrenheit">ºF</span>
+      </p>
+
+      <div class="search-container">
+        <form class="search-city-form" id="search-form">
+          <input
+            type="search"
+            placeholder="Enter city..."
+            class="form-control search-city"
+            autofocus
+            autocomplete="off"
+            id="city-input"
+          />
+          <input type="submit" value="Go!" class="go-button" id="submit-city" />
+          <i
+            class="fas fa-map-marker-alt current-location"
+            alt="current location"
+            title="My Current Location"
+          ></i>
+        </form>
+      </div>
+
+      <div class="place-date-time">
+        <h2 id="city">Lisbon</h2>
+        <h3>Monday, August 9th | 15h30</h3>
+      </div>
+
+      <div class="current-weather-info">
+        <i class="fas fa-moon current-weather" alt="current weather"></i>
+
+        <span class="current-weather-details">
+          <p class="sky-details">Clear sky</p>
+          <p class="current-temperature">30</p>
+          <p class="current-max-min-temp">
+            ↑ <span class="current-max-temp">32º</span> ↓
+            <span class="current-min-temp">20º</span>
+          </p>
+        </span>
+      </div>
+
+      <hr />
+
+      <div class="weather-days-week-container">
+        <div class="day-1-block">
+          <h4 class="day-1">Tue</h4>
+          <i class="fas fa-sun day-1-weather" alt="weather for tomorrow"></i>
+          <p class="max-min-temp">
+            ↑
+            <span class="max-temp-day-1">29º</span>
+            <br />
+            ↓
+            <span class="min-temp-day-1">20º</span>
+          </p>
+        </div>
+
+        <div class="day-2-block">
+          <h4 class="day-2">Wed</h4>
+          <i
+            class="fas fa-sun day-2-weather"
+            alt="weather for 2 days from now"
+          ></i>
+          <p class="max-min-temp">
+            ↑
+            <span class="max-temp-day-2">29º</span>
+            <br />
+            ↓
+            <span class="min-temp-day-2">20º</span>
+          </p>
+        </div>
+
+        <div class="day-3-block">
+          <h4 class="day-3">Thu</h4>
+          <i
+            class="fas fa-sun day-3-weather"
+            alt="weather for 3 days from now"
+          ></i>
+          <p class="max-min-temp">
+            ↑
+            <span class="max-temp-day-3">29º</span>
+            <br />
+            ↓
+            <span class="min-temp-day-3">20º</span>
+          </p>
+        </div>
+
+        <div class="day-4-block">
+          <h4 class="day-4">Fri</h4>
+          <i
+            class="fas fa-sun day-4-weather"
+            alt="weather for 4 days from now"
+          ></i>
+          <p class="max-min-temp">
+            ↑
+            <span class="max-temp-day-4">29º</span>
+            <br />
+            ↓
+            <span class="min-temp-day-4">20º</span>
+          </p>
+        </div>
+
+        <div class="day-5-block">
+          <h4 class="day-5">Sat</h4>
+          <i
+            class="fas fa-sun day-5-weather"
+            alt="weather for 5 days from now"
+          ></i>
+          <p class="max-min-temp">
+            ↑
+            <span class="max-temp-day-5">29º</span>
+            <br />
+            ↓
+            <span class="min-temp-day-5">20º</span>
+          </p>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row real-feel-row">
+        <div class="col-12 real-feel-column">
+          <p class="real-feel">🌡️ RealFeel©</p>
+          <p class="real-feel-real-time">28º</p>
+        </div>
+      </div>
+
+      <div class="row wind-humidity-rain">
+        <div class="col-4 wind-column">
+          <p class="wind">💨 Wind</p>
+          <p class="wind-real-time">23 km/h</p>
+        </div>
+
+        <div class="col-4 humidity-column">
+          <p class="humidity">💧 Humidity</p>
+          <p class="humidity-real-time">77%</p>
+        </div>
+
+        <div class="col-4 chance-of-rain-column">
+          <p class="chance-of-rain">🌧️ % of rain</p>
+          <p class="chance-of-rain-real-time">10%</p>
+        </div>
+      </div>
+
+      <div class="row sunrise-sunset">
+        <div class="col-6">
+          <p class="sunrise">🌅 Sunrise</p>
+          <p class="sunrise-real-time">06h46</p>
+        </div>
+
+        <div class="col-6">
+          <p class="sunset">🌇 Sunset</p>
+          <p class="sunset-real-time">20h37</p>
+        </div>
+      </div>
+    </div>
+    <script src="/Curso PLUS/Weather App HTML CSS/index.js"></script>
+  </body>
+</html>
