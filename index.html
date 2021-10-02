@@ -30,11 +30,6 @@
     <div class="container">
       <h1>Weather App</h1>
 
-      <p class="celsius-fahrenheit-block">
-        <span class="celsius">ºC</span>
-        <span class="fahrenheit">ºF</span>
-      </p>
-
       <div class="search-container">
         <form class="search-city-form" id="search-form">
           <input
@@ -64,8 +59,13 @@
 
         <span class="current-weather-details">
           <p class="sky-details">Clear sky</p>
-          <p class="current-temperature">30</p>
-          <p class="current-max-min-temp">
+          <div class="current-temperature-block">
+            <span class="current-temperature">30</span>
+            <span class="celsius-fahrenheit-block">
+              <span class="celsius">ºC</span>
+              <span class="fahrenheit">ºF</span>
+            </div>
+         <p class="current-max-min-temp">
             ↑ <span class="current-max-temp">32º</span> ↓
             <span class="current-min-temp">20º</span>
           </p>

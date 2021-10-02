@@ -14,35 +14,10 @@ h1 {
   color: #592e83;
 }
 
-.celsius-fahrenheit-block {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 20px;
-  padding-right: 15px;
-  margin-top: 10px;
-  font-weight: bold;
-  color: #592e83;
-}
-
-.celsius {
-  font-style: normal;
-  font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
-}
-
-.fahrenheit {
-  padding-left: 10px;
-  font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
-}
-
-.celsius:hover,
-.fahrenheit:hover {
-  cursor: pointer;
-  opacity: 0.4;
-}
-
 .search-container {
   display: flex;
   padding: 0px 110px;
+  margin-top: 40px;
   margin-bottom: 30px;
 }
 
@@ -125,10 +100,44 @@ h3 {
   text-transform: capitalize;
 }
 
+.current-temperature-block {
+  display: flex;
+  margin-bottom: 20px;
+}
+
 .current-temperature {
+  justify-content: center;
   font-size: 35px;
   font-weight: bolder;
   color: #592e83;
+  margin-left: 60px;
+}
+
+.celsius-fahrenheit-block {
+  font-size: 16px;
+  padding-right: 15px;
+  font-weight: bold;
+  color: #592e83;
+  float: right;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.celsius {
+  font-style: normal;
+  font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
+}
+
+.fahrenheit {
+  padding-left: 10px;
+  font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
+}
+
+.celsius:hover,
+.fahrenheit:hover {
+  cursor: pointer;
+  opacity: 0.4;
 }
 
 hr {
