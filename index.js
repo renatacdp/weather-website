@@ -43,18 +43,23 @@ let h3 = document.querySelector("h3");
 h3.innerHTML = `${day}, ${month} ${date} | ${hours}h${minutes}`;
 
 //search city
-
-function searchCity(event) {
-  event.preventDefault();
-  let cityName = document.querySelector("#city-input").value;
+function searchCity(city) {
   let apiKey = "701f06352d61835bc4fc894e7b084629";
   let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayWeather);
 }
 
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  searchCity(cityInputElement.value);
+}
+
+searchCity("Lisbon");
+
 let submitCity = document.querySelector("#search-form");
-submitCity.addEventListener("submit", searchCity);
+submitCity.addEventListener("submit", handleSubmit);
 
 function displayWeather(response) {
   let currentCity = document.querySelector("h2");
@@ -63,7 +68,7 @@ function displayWeather(response) {
   let currentTemperature = document.querySelector(".current-temperature");
 
   //Sky details:
-  currentTemperature.innerHTML = `${cityTemperature}ºC`;
+  currentTemperature.innerHTML = `${cityTemperature}`;
   let skyDetails = document.querySelector(".sky-details");
   skyDetails.innerHTML = `${response.data.weather[0].description}`;
 
@@ -75,6 +80,14 @@ function displayWeather(response) {
   let minCityTemperature = Math.round(response.data.main.temp_min);
   let minTemperature = document.querySelector(".current-min-temp");
   minTemperature.innerHTML = `${minCityTemperature}º`;
+
+  //Icon:
+  let iconElement = document.querySelector(".current-weather-icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 
   //RealFeel, Wind, Humidity: (% of Rain, Sunrise and Sunset not currently working)
   let cityRealFeel = Math.round(response.data.main.feels_like);
