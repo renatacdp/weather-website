@@ -47,7 +47,7 @@ function searchCity(city) {
   let apiKey = "701f06352d61835bc4fc894e7b084629";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(displayWeather);
+  axios.get(apiUrl).then(displayWeather).then(displayForecast);
 }
 
 function handleSubmit(event) {
@@ -56,16 +56,16 @@ function handleSubmit(event) {
   searchCity(cityInputElement.value);
 }
 
-searchCity("Lisbon");
-
 let submitCity = document.querySelector("#search-form");
 submitCity.addEventListener("submit", handleSubmit);
 
 function displayWeather(response) {
   let currentCity = document.querySelector("h2");
   currentCity.innerHTML = `${response.data.name}`;
-  let cityTemperature = Math.round(response.data.main.temp);
+  let cityTemperature = Math.round(celsiusTemperature);
   let currentTemperature = document.querySelector(".current-temperature");
+
+  celsiusTemperature = response.data.main.temp;
 
   //Sky details:
   currentTemperature.innerHTML = `${cityTemperature}`;
@@ -111,7 +111,30 @@ function displayWeather(response) {
 }
 
 //Celsius and Fahrenheit Conversion:
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let temperatureElement = document.querySelector(".current-temperature");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector(".current-temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
 let fahrenheitLink = document.querySelector(".fahrenheit");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector(".celsius");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 //Display Current User Location:
 function getCurrentLocation(position) {
@@ -129,3 +152,5 @@ function getCurrentLocationEvent(position) {
 
 let currentLocationButton = document.querySelector(".current-location");
 currentLocationButton.addEventListener("click", getCurrentLocationEvent);
+
+searchCity("Lisbon");
