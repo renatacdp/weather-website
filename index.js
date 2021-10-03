@@ -89,7 +89,7 @@ function displayWeather(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
-  //RealFeel, Wind, Humidity: (% of Rain, Sunrise and Sunset not currently working)
+  //RealFeel, Wind, Humidity:
   let cityRealFeel = Math.round(response.data.main.feels_like);
   let realFeelTemperature = document.querySelector(".real-feel-real-time");
   realFeelTemperature.innerHTML = `${cityRealFeel}º`;
@@ -99,8 +99,21 @@ function displayWeather(response) {
   let cityHumidity = document.querySelector(".humidity-real-time");
   let humidityRealTime = Math.round(response.data.main.humidity);
   cityHumidity.innerHTML = `${humidityRealTime}%`;
+
+  //Sunrise and Sunset:
+  let unixSunrise = new Date(response.data.sys.sunrise * 1000).toTimeString();
+  let sunriseDate = document.querySelector(".sunrise-real-time");
+  sunriseDate.innerHTML = `${unixSunrise}`;
+
+  let unixSunset = new Date(response.data.sys.sunset * 1000).toTimeString();
+  let sunsetDate = document.querySelector(".sunset-real-time");
+  sunsetDate.innerHTML = `${unixSunset}`;
 }
 
+//Celsius and Fahrenheit Conversion:
+let fahrenheitLink = document.querySelector(".fahrenheit");
+
+//Display Current User Location:
 function getCurrentLocation(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
