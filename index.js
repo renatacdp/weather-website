@@ -88,7 +88,7 @@ function displayWeather(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
-  //RealFeel, Wind, Humidity:
+  //RealFeel, Wind, Humidity, Cloudiness:
   let cityRealFeel = Math.round(response.data.main.feels_like);
   let realFeelTemperature = document.querySelector(".real-feel-real-time");
   realFeelTemperature.innerHTML = `${cityRealFeel}º`;
@@ -98,6 +98,9 @@ function displayWeather(response) {
   let cityHumidity = document.querySelector(".humidity-real-time");
   let humidityRealTime = Math.round(response.data.main.humidity);
   cityHumidity.innerHTML = `${humidityRealTime}%`;
+  let chanceOfRain = response.data.clouds.all;
+  let chanceOfRainData = document.querySelector(".chance-of-rain-real-time");
+  chanceOfRainData.innerHTML = `${chanceOfRain}%`;
 
   //Sunrise and Sunset:
   function formatTime(timestamp) {
