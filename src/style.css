@@ -1,5 +1,5 @@
 .container {
-  background-color: #f0edee;
+  background-color: #dcbfe1;
   flex-direction: column;
   max-width: 600px;
   padding: 20px;
@@ -97,6 +97,9 @@ h3 {
 
 .sky-details {
   font-size: 20px;
+}
+
+.sky-details::first-letter {
   text-transform: capitalize;
 }
 
@@ -192,7 +195,7 @@ hr {
 
 .github-link {
   text-align: center;
-  background-color: #f0edee;
+  background-color: #dcbfe1;
   max-width: 600px;
   flex-direction: column;
   padding: 20px;
