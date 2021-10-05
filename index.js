@@ -47,7 +47,7 @@ function searchCity(city) {
   let apiKey = "701f06352d61835bc4fc894e7b084629";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(displayWeather).then(displayForecast);
+  axios.get(apiUrl).then(displayWeather);
 }
 
 function handleSubmit(event) {
@@ -62,10 +62,9 @@ submitCity.addEventListener("submit", handleSubmit);
 function displayWeather(response) {
   let currentCity = document.querySelector("h2");
   currentCity.innerHTML = `${response.data.name}`;
+  celsiusTemperature = response.data.main.temp;
   let cityTemperature = Math.round(celsiusTemperature);
   let currentTemperature = document.querySelector(".current-temperature");
-
-  celsiusTemperature = response.data.main.temp;
 
   //Sky details:
   currentTemperature.innerHTML = `${cityTemperature}`;
@@ -101,13 +100,24 @@ function displayWeather(response) {
   cityHumidity.innerHTML = `${humidityRealTime}%`;
 
   //Sunrise and Sunset:
-  let unixSunrise = new Date(response.data.sys.sunrise * 1000).toTimeString();
-  let sunriseDate = document.querySelector(".sunrise-real-time");
-  sunriseDate.innerHTML = `${unixSunrise}`;
+  function formatTime(timestamp) {
+    let time = new Date(timestamp);
+    let hours = time.getHours();
+    if (hours < 10) {
+      hours = `0${hours}`;
+    }
+    let minutes = time.getMinutes();
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+    return `${hours}h${minutes}`;
+  }
 
-  let unixSunset = new Date(response.data.sys.sunset * 1000).toTimeString();
+  let sunriseDate = document.querySelector(".sunrise-real-time");
+  sunriseDate.innerHTML = formatTime(response.data.sys.sunrise * 1000);
+
   let sunsetDate = document.querySelector(".sunset-real-time");
-  sunsetDate.innerHTML = `${unixSunset}`;
+  sunsetDate.innerHTML = formatTime(response.data.sys.sunset * 1000);
 }
 
 //Celsius and Fahrenheit Conversion:
