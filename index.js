@@ -42,29 +42,45 @@ let month = months[now.getMonth()];
 let h3 = document.querySelector("h3");
 h3.innerHTML = `${day}, ${month} ${date} | ${hours}h${minutes}`;
 
-//forecast (not actual data yet)
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+//forecast
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "";
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
         <div>
-          <h4>${day}</h4>
+          <h4>${formatDay(forecastDay.dt)}</h4>
           <img
-            src="http://openweathermap.org/img/wn/02d@2x.png"
+            src="http://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png"
             class="forecast-weather"
           />
           <p class="max-min-temp">
             ↑
-            <span class="max-temp-day-1">29º</span>
+            <span class="max-temp-day-1">${Math.round(
+              forecastDay.temp.max
+            )}º</span>
             <br />
             ↓
-            <span class="min-temp-day-1">20º</span>
+            <span class="min-temp-day-1">${Math.round(
+              forecastDay.temp.min
+            )}º</span>
           </p>
         </div>`;
+    }
   });
 
   forecastElement.innerHTML = forecastHTML;
@@ -86,6 +102,13 @@ function handleSubmit(event) {
 
 let submitCity = document.querySelector("#search-form");
 submitCity.addEventListener("submit", handleSubmit);
+
+function getForecast(coordinates) {
+  let apiKey = "701f06352d61835bc4fc894e7b084629";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function displayWeather(response) {
   let currentCity = document.querySelector("h2");
@@ -149,6 +172,8 @@ function displayWeather(response) {
 
   let sunsetDate = document.querySelector(".sunset-real-time");
   sunsetDate.innerHTML = formatTime(response.data.sys.sunset * 1000);
+
+  getForecast(response.data.coord);
 }
 
 //Celsius and Fahrenheit Conversion:
@@ -195,4 +220,3 @@ let currentLocationButton = document.querySelector(".current-location");
 currentLocationButton.addEventListener("click", getCurrentLocationEvent);
 
 searchCity("Lisbon");
-displayForecast();
