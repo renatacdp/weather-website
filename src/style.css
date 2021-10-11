@@ -153,7 +153,7 @@ hr {
   color: #000;
 }
 
-.weather-days-week-container {
+.forecast-week {
   display: flex;
   flex-wrap: row nowrap;
   justify-content: space-evenly;
@@ -162,12 +162,8 @@ hr {
   text-align: center;
 }
 
-.day-1-weather,
-.day-2-weather,
-.day-3-weather,
-.day-4-weather,
-.day-5-weather {
-  font-size: 30px;
+.forecast-weather {
+  max-width: 60%;
   color: #592e83;
 }
 
@@ -228,7 +224,7 @@ hr {
     padding: 0px 10px;
   }
 
-  .weather-days-week-container {
+  .forecast-week {
     font-size: 90%;
   }
 

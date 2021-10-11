@@ -42,6 +42,34 @@ let month = months[now.getMonth()];
 let h3 = document.querySelector("h3");
 h3.innerHTML = `${day}, ${month} ${date} | ${hours}h${minutes}`;
 
+//forecast (not actual data yet)
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = "";
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+        <div>
+          <h4>${day}</h4>
+          <img
+            src="http://openweathermap.org/img/wn/02d@2x.png"
+            class="forecast-weather"
+          />
+          <p class="max-min-temp">
+            ↑
+            <span class="max-temp-day-1">29º</span>
+            <br />
+            ↓
+            <span class="min-temp-day-1">20º</span>
+          </p>
+        </div>`;
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
 //search city
 function searchCity(city) {
   let apiKey = "701f06352d61835bc4fc894e7b084629";
@@ -167,3 +195,4 @@ let currentLocationButton = document.querySelector(".current-location");
 currentLocationButton.addEventListener("click", getCurrentLocationEvent);
 
 searchCity("Lisbon");
+displayForecast();
